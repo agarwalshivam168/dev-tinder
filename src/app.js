@@ -4,6 +4,40 @@ const express = require("express");
 
 const app = express();
 
+// Playing with Route Handlers
+app.get(
+    '/route', 
+    (req, res, next) => {
+        console.log("Route Handler 01!");
+        // res.send("RH01");
+        next();
+    },
+    (req, res, next) => {
+        console.log("Route Handler 02!");
+        // res.send("RH02")
+        next();
+    },
+    (req, res, next) => {
+        console.log("Route Handler 03!");
+        // res.send("RH03")
+        next();
+    },
+    (req, res, next) => {
+        console.log("Route Handler 04!");
+        // res.send("RH04")
+        next();
+    },
+    (req, res) => {
+        console.log("Route Handler 05!");
+        res.send("RH05")
+    },
+)
+
+app.get('/user', (req, res) => {
+    res.send(req.query)
+})
+
+
 // Dynamic routing
 app.get('/user/:userId/:userName/:password', (req, res) => {
     res.send(req.params)
