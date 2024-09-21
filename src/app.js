@@ -4,6 +4,16 @@ const express = require("express");
 
 const app = express();
 
+// Dynamic routing
+app.get('/user/:userId/:userName/:password', (req, res) => {
+    res.send(req.params)
+})
+
+app.get('/user', (req, res) => {
+    res.send(req.query)
+})
+
+
 // Advanced routing
 app.get('/ab+c', (req, res) => {
     res.send('This is ab+c!')
