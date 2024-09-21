@@ -4,6 +4,27 @@ const express = require("express");
 
 const app = express();
 
+const { validateAdmin, validateUser } = require("./middlewares/auth.js")
+
+// Playing with middlewares
+app.use("/admin", validateAdmin, (req, res) => {
+    res.send("Welcome Admin!")
+})
+
+app.get("/user/login", (req, res) => {
+    res.send("Please log-in");
+})
+
+app.use("/user", validateUser)
+
+app.get(
+    "/user/dashboard", 
+    // validateUser,
+    (req, res) => {
+        res.send("Welcome to Dashboard!");
+    }
+)
+
 // Playing with Route Handlers
 app.get(
     '/route', 
