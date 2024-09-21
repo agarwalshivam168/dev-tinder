@@ -7,14 +7,14 @@ const app = express();
 // Playing with Route Handlers
 app.get(
     '/route', 
-    (req, res, next) => {
+    (req, res, validateAdmin) => {
         console.log("Route Handler 01!");
         // res.send("RH01");
-        next();
+        validateAdmin();
     },
     (req, res, next) => {
         console.log("Route Handler 02!");
-        // res.send("RH02")
+        res.send("RH02")
         next();
     },
     (req, res, next) => {
